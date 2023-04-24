@@ -1,178 +1,243 @@
 <?php
-  include_once("rotas.php");
+include_once("rotas.php");
+require_once $funcoesRoute;
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doc Hudson</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5998/5998796.png">
-    <link rel="stylesheet" href="Frontend/header.css">
-    <link rel="stylesheet" href="Frontend/cssHomePage/home.css">
-    <link rel="stylesheet" href="Frontend/cssHomePage/marketing.css">
-    <link rel="stylesheet" href="Frontend/cssHomePage/blog.css">
-    <link rel="stylesheet" href="Frontend/cssHomePage/localiza.css">
-    <link rel="stylesheet" href="Frontend/cssHomePage/instituicao.css">
-   
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-    rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-    crossorigin="anonymous">
+    <title>Hamtaro Petshop</title>
+    <link rel="stylesheet" href="pages/css-estatico/header.css">
+    <link rel="stylesheet" href="pages/css-estatico/home.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+    <script src="<?php echo $functionsRoute; ?>"></script>
 </head>
-<body onresize="checaDispositivo()" onload="checaDispositivo()" onscroll="escondeHeader()">
-  
-    <a href="#topo" class="setaTopo">
-      <img src="Frontend/FrontendPages/img/right-arrow.png" alt="seta">
-    </a>
 
-    <header>
-        <a href="" class="logo">
-            <img src="Frontend/FrontendPages/img/Capturar-removebg-preview 1.png" alt="logoEmpresa">
-        </a>
+<body>
 
-        <img onclick="chamaMenu()" src="Frontend/FrontendPages/img/menu-suspenso.png" class="menu" alt="menu">
-
-        <ul class="retratil">
-            <li class="menuItens" style="font-weight:400;"><a href="Frontend\FrontendPages\mapa\mapa.html">Mapa de localização</a></li>
-            <li class="menuItens"><a href="Frontend\FrontendPages\blog\blog.html">Blog</a></li>
-            <li class="menuItens"><a href="Frontend\FrontendPages\institucional\institucional.html">Institucional</a></li>
-            <li><a href="<?php echo $loginRoute; ?>">Login</a></li>
-        </ul>
-    </header>
-
-    <section class="home" id="topo">
-        <div class="box">
-            <div>
-                <h1>CONHEÇA NOSSA ESTRUTURA</h1>
-                <p>São Paulo - Capital</p>
-                <a href="Frontend/FrontendPages/institucional/institucional.html">Veja</a>
-            </div>
-        </div>
-    </section>
-
-    <div class="divisoria"></div>
-
-    <section class="container row mark">
-      
-      <div class="col-md">
-        <img src="Frontend/FrontendPages/img/ciber-seguranca 1.png" alt="segurança">
-        <h2>Segurança</h2>
-        <p>Mantemos seu carro seguro enquanto você precisar</p>
-      </div>
-      
-      <div class="col-md">
-        <img src="Frontend/FrontendPages/img/localizacao 1.png" class="maior" alt="localizacao">
-        <h2>Localização</h2>
-        <p>localização próxima ao seus objetivos</p>
-      </div>
-      
-      <div class="col-md">
-        <img src="Frontend/FrontendPages/img/transferencia-movel 1.png" alt="preço">
-        <h2>Preço</h2>
-        <p>Preços acessiveis e justos para toda a população</p>
-      </div>
-
-    </section>
-
-    <div class="divisoria"></div>
-
-
-    <section class="container-fluid row map">
-      <div class="col-md centraGrid">
-        <div class="gridMap">
-          <img src="Frontend/FrontendPages/img/localizacao 2.png" id="item1" alt="seta">
-          <img src="Frontend/FrontendPages/img/Rectangle 59.png" id="item2" alt="cidade">
-          <img src="Frontend/FrontendPages/img/Rectangle 61.png" id="item3" alt="cidade2">
-        </div>
-      </div>
-
-      <div class="col-md descMap">
-        <h2>MAPA DE LOCALIZAÇÃO NA CIDADE DE SÃO PAULO</h2>
-        <p>Nossa página de mapa interativo é a maneira mais fácil de encontrar nossa localização e planejar sua rota até nós. Explore a região, encontre lugares de interesse e navegue facilmente pelo mapa usando as ferramentas intuitivas.</p>
-        <a href="Frontend\FrontendPages\mapa\mapa.html">Mapa</a>
-      </div>
-    </section>
-
-    <div class="divisoria"></div>
-
-    <section class="container-fluid row blog">
-      <div class="col-md carImg">
-        <div></div>
-        <img src="Frontend/FrontendPages/img/image-removebg-preview 1.png" alt="carro">
-      </div>
-
-      <div class="col-md descBlog">
-        <h2>CONHEÇA NOSSO BLOG</h2>
-        <p>Este é o nosso espaço com dicas, notícias, novidades e informações úteis sobre
-          os principais eventos que contam com nossos estacionamentos, mobilidade urbana e mais!</p>
-        <a href="Frontend\FrontendPages\blog\blog.html">Saiba mais</a>
-      </div>
-
-      <!-- <div class="col-md barra">
-        <div></div>
-      </div> -->
-    </section>
-
-    <div class="divisoria"></div>
-
-    <section class="container-fluid row inst m-0">
-      <div>
-        <h2>SOBRE A DOC HUDSON</h2>
-        <p>Buscamos através da inovação tecnologica a maior segurança e comodidade para o seu carro
-          em uma localização coringa para o dia a dia em São Paulo</p>
-        <a href="Frontend\FrontendPages\institucional\institucional.html">Saiba Mais</a>
-      </div>
-    </section>
-
-    <div class="divisoria"></div>
-
-
-    <div class="contato">
-      <button class="fecha">X</button>
-      <h2>ENTRE EM CONTATO</h2>
-
-      <p>Se você ficou interessado, preencha o formulário abaixo e entre para a rede de estacionamentos que é líder no mercado.</p>
-
-      <form action="">
-        <fieldset id="email">
-          <legend>E-mail</legend>
-          <input type="email">
-        </fieldset>
-        <fieldset id="ddd">
-          <legend>DDD</legend>
-          <input type="text">
-        </fieldset>
-        <fieldset id="tell">
-          <legend>Telefone</legend>
-          <input type="text">
-        </fieldset>
-        <fieldset id="mensa">
-          <legend>Mensagem</legend>
-          <textarea name="" id="" cols="10" rows="10"></textarea>
-        </fieldset>
-
-        <button>Enviar</button>
-      </form>
+    <div class="contatoHeader">
+        <p>Contate-nos: (11) 98253-2481</p>
+        <img src="pages/img-estatico/endereço.svg" alt="">
     </div>
 
+
+
+    <header>
+        <a href="#" class="logo">
+            <img src="pages/img-estatico/logo.svg" alt="">
+        </a>
+
+        <div class="responsive">
+
+            <img src="pages/img-estatico/fechar.png" class="fechaMenu" alt="fecha">
+            <div class="links">
+                <a href="<?php echo $blogRoute; ?>">BLOG</a>
+                <a href="<?php echo $sobreRoute; ?>">SOBRE NÓS</a>
+                <a href="<?php echo $contatoRoute; ?>">CONTATO</a>
+
+            </div>
+
+            <div class="acesso">
+                <?php
+                if (loged()) {
+                    if (isset($_SESSION['tipo'])) {
+                        // Se o usuário logado for um funcionário, ele é levado para a pág de agendamento
+                        header("Location: " . $agendamentoFunRoute);
+                    } else {
+                        // Esses botões só aparecem quando o usuário estive logado
+                        echo "
+                        <a href='$fazAgendamentoCliRoute'>Fazer Agendamento</a>
+                        <a href='$cadAnimaisCliRoute'>Cadastrar Animais</a>
+                        ";
+                    }
+                } else {
+                    // Esses botões aparecem se o usuário não estiver logado
+                    echo "<a href='$loginCliRoute'><img src='pages/img-estatico/login.svg' alt=''> Login</a>";
+                    echo "<a href='$cadastroCliRoute'>Cadastro</a>";
+                }
+                // if (isset($_SESSION['msgRotaProibidaCli'])){
+                //   echo $_SESSION['msgRotaProibidaCli'];
+                //   unset($_SESSION['msgRotaProibidaCli']);
+                // }
+
+                ?>
+            </div>
+        </div>
+
+
+
+        <?php
+        if (loged()) {
+            if (isset($_SESSION['tipo'])) {
+                // Se o usuário logado for um funcionário, ele é levado para a pág de agendamento
+                header("Location: " . $agendamentoFunRoute);
+            } else {
+                // Esses botões só aparecem quando o usuário estive logado
+                echo "  <div class='perfil' onmousedown='menuPerfil()'>
+                        <i class='bi bi-person-square'></i>
+                        <p>></p>
+                        </div>
+
+                        
+                        <div class='menu-perfil'>
+                        <a href='$meuPerfilCliRoute'><img src='pages/img-estatico/account_circle.svg'> Meu Perfil</a>
+                        <a href='$animaisCliRoute'>Meus Animais</a>
+                        <a href='$agendamentoCliRoute'>Meus Agendamentos</a>
+                        <button onclick='executeFunctions(" . '"logoff" , ""' . ")'>Sair</button>
+                        </div>";
+            }
+        }
+        ?>
+
+        <img src="pages/img-estatico/menu.png" class="menu" alt="menu">
+    </header>
+
+
+
+
+    <section class="container carrossel">
+        <div class="container" id="slider-container">
+            <div id="carouselMainControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="pages/img-estatico/carousel01.svg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="pages/img-estatico/carousel02.svg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="pages/img-estatico/carousel03.svg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselMainControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselMainControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+    </section>
+
+
+
+
+
+    <section class="container row agendamento">
+        <div class="col-md-7">
+            <h1>Agende agora a consulta do seu pet com os melhores veterinários no Petshop Hamtaro!</h1>
+
+            <h2>No Petshop Hamtaro, oferecemos uma equipe de veterinários altamente qualificados, prontos para atender
+                seu pet
+                com cuidado e dedicação, além de consultas personalizadas para garantir a saúde e bem-estar do seu
+                melhor amigo.
+            </h2>
+
+            <a href="<?php echo $agendamentoCliRoute; ?>">Agendamento</a>
+        </div>
+
+        <img class="col-md-4" src="pages/img-estatico/agendar.svg" alt="">
+    </section>
+
+
+
+
+
+    <section class="container-fluid desconto">
+        <h2>30% DE DESCONTO NA VACINAÇÃO</h2>
+
+        <div>
+            <img src="pages/img-estatico/desconto1.svg" alt="">
+            <img src="pages/img-estatico/desconto2.svg" alt="">
+            <img src="pages/img-estatico/desconto3.svg" alt="">
+            <img src="pages/img-estatico/desconto4.svg" alt="">
+        </div>
+
+        <p>Não deixe a saúde do seu pet de lado! No Petshop Hamtaro, estamos oferecendo um desconto especial de 30% em
+            todas
+            as vacinas para cães e gatos. Isso significa que você pode manter o seu pet protegido contra doenças comuns
+            e
+            perigosas por um preço muito mais acessível.</p>
+
+        <a href="<?php echo $fazAgendamentoCliRoute; ?>">Faça sua consulta</a>
+    </section>
+
+
+
+
+
+    <section class="container servicos">
+        <h2>SERVIÇOS DISPONÍVEIS NO HAMTARO PETSHOP</h2>
+
+        <p>Proporcione ao seu animal de estimação os melhores cuidados e atenção que ele merece, agende agora mesmo os
+            serviços de alta qualidade oferecidos em nosso pet shop.</p>
+
+        <div class="boxServicos">
+            <div>
+                <img src="pages/img-estatico/banho-e-tosa.svg" alt="">
+                <h3>Banho e tosa</h3>
+                <p>O serviço de banho e tosa do Hamtaro Petshop inclui a lavagem, corte de pelos e limpeza de ouvidos e
+                    unhas do
+                    animal. É importante escolher um profissional qualificado para garantir a higiene e a aparência do
+                    seu animal
+                    de estimação.</p>
+            </div>
+
+            <div>
+                <img src="pages/img-estatico/Delivery.svg" alt="">
+                <h3>Delivery</h3>
+                <p>O Hamtaro é um petshop que oferece o serviço de entrega de pets em casa. Esse serviço permite que os
+                    clientes
+                    possam receber seus animais de estimação com comodidade e segurança, sem precisar se deslocar até a
+                    loja
+                    física.</p>
+            </div>
+
+            <div>
+                <img src="pages/img-estatico/Doctor.svg" alt="">
+                <h3>Clinico</h3>
+                <p>A clínica veterinária da Hamtaro oferece serviços completos e confiáveis, incluindo consultas,
+                    vacinação,
+                    exames laboratoriais, cirurgias e internação. A equipe de veterinários experientes e qualificados
+                    cuidará da
+                    saúde e do bem-estar do seu animal de estimação.</p>
+            </div>
+        </div>
+
+        <a href="./pages/noticias/noticia3.php">Confira</a>
+    </section>
+
     <footer>
+        <a href="#" class="logo">
+            <img src="pages/img-estatico/logo.svg" alt="">
+        </a>
 
-      <!-- <img src="Frontend\FrontendPages\img\Capturar-removebg-preview 1.png" alt="logo"> -->
+        <div class="links">
+            <a href="<?php echo $blogRoute; ?>">BLOG</a>
+            <a href="<?php echo $sobreRoute; ?>">SOBRE NÓS</a>
+            <a href="<?php echo $contatoRoute; ?>">CONTATO</a>
+        </div>
 
-      <div>
-        <button>Contate-nos</button>
-        <a href=""><img src="Frontend\FrontendPages\img\facebook.png" alt="facebook"></a>
-        <a href=""><img src="Frontend\FrontendPages\img\github.png" alt="github"></a>
-        <a href=""><img src="Frontend\FrontendPages\img\insta.png" alt="instagram"></a>
-      </div>
+        <div class="redes">
+            <img src="pages/img-estatico/facebook.svg" alt="">
+            <img src="pages/img-estatico/youtube.svg" alt="">
+            <img src="pages/img-estatico/twitter.svg" alt="">
+            <img src="pages/img-estatico/github.svg" alt="">
+        </div>
 
+        <p>© Hamtaro Petshop todos direitos reservados</p>
     </footer>
 
-    <script src="Frontend/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
+    <script src="pages/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
+
 </html>
