@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,10 +6,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Histórico</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5998/5998796.png">
+  <link rel="stylesheet" href="cssBack/lista.css">  
+  <link rel="stylesheet" href="cssBack/modalfechamento.css">
 </head>
 
-<link rel="stylesheet" href="cssBack/lista.css">
 
 <body>
 
@@ -16,13 +19,24 @@
   session_start();
   include_once("../../rotas.php"); // Inclui o arquivo de rotas
   include_once($connRoute); // Inclui o arquivo de conexao
+  date_default_timezone_set('America/Sao_Paulo'); // Define o timezone para São Paulo
   
   // Verifica se o usuário está logado
   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
     // Caso o tipo do usuário fo Adm, mostrará o botão que leva a página de cadastro
-    echo "<div class='back'>";
-  
-    echo "<header>";
+    
+    echo "<header>
+    <a href='' class='logo'>
+    <img src='img/logo.png' alt='logoEmpresa'>
+    </a> 
+    
+    <img onclick='chamaMenu()' src='../FrontendPages/img/menu-suspenso.png' class='menu' alt='menu'>
+    
+    <div class='botoesHeader retratil'>
+    
+    ";
+
+    
 
     if ($_SESSION['tipo'] == 'Adm') {
       echo "<a href='$cadFunRoute'>CADASTRAR FUNCIONÁRIO <br></a>";
@@ -30,33 +44,32 @@
     echo "<a href='$registroRoute'>NOVA ENTRADA</a>";
     echo "<a href='$listaRoute'>ENTRADAS</a><br>";
 
-    echo "</header>";
+    echo "<form action='$historicoRoute' method='get'>
+    <input type='text' placeholder='pesquise por placas' name='pesq'><input type='submit' value='pesquisar'>
+    </form>";
 
-    echo "
-    <form action='$historicoRoute' method='get'>
-      <input type='text' placeholder='pesquise por placas' name='pesq'>
-      <input type='submit' value='pesquisar'>
-    </form>
+    echo " </header>
     ";
+
+
 
     echo "<div class='historico'>";
 
     echo "
+    <h1>Histórico</h1>
+
     <form action='$historicoRoute' method='get'>
-      <input type='date' placeholder='Digite a data para a pesquisa' name='dataa'>
-      <input type='submit' value='pesquisar'>
+      <input type='date' placeholder='Digite a data para a pesquisa' name='dataa'><input type='submit' value='pesquisar'>
     </form>
     ";
 
     if (isset($_GET['pesq'])) {
       $pesq = $_GET['pesq'];
-
     } else {
       $pesq = "";
     }
 
     if (isset($_GET['dataa'])) {
-      
 
       $hoje = $_GET['dataa'];
 
@@ -81,8 +94,8 @@
 
       $qtd_carros = mysqli_fetch_array($execucao)[0];
 
-      echo "<p style = 'color: green;'>Total ganho referente ao dia $hoje_formatado : R$$total_ganho</p>";
-      echo "<p style = 'color: green;'>Total de carros que estacionaram aqui : $qtd_carros";
+      echo "<p>Total ganho referente ao dia $hoje_formatado : R$$total_ganho</p>";
+      echo "<p>Total de carros que estacionaram aqui : $qtd_carros";
 
 
     } else {
@@ -90,7 +103,7 @@
       $hoje = date('Y-m-d');
 
       // Formata a data para o padrão dia/mes/ano
-      $hoje_formatado = date("d-m-Y");
+      $hoje_formatado = date("d-m-Y", strtotime($hoje));
 
       // Gera a receita de ganho na data esolhida
       $comando2 = "select sum(Valor_pago) from registros where Data = '$hoje';";
@@ -111,11 +124,11 @@
 
       $qtd_carros = mysqli_fetch_array($execucao)[0];
 
-      echo "<p style = 'color: green;'>Total ganho referente ao dia $hoje_formatado : R$$total_ganho</p>";
-      echo "<p style = 'color: green;'>Total de carros que estacionaram aqui : $qtd_carros";
+      echo "<p>Total ganho referente ao dia $hoje_formatado : R$$total_ganho</p>";
+      echo "<p>Total de carros que estacionaram aqui : $qtd_carros";
+
     } 
 
-    echo "</div>";
     echo "</div>";
 
     // Receber o número da página
@@ -132,7 +145,7 @@
 
     // Faz uma query para retornar todos os registros que não foram fechados
     $resultado = mysqli_query($conn, "SELECT * FROM registros
-    WHERE Horario_saida IS NOT NULL AND Placa like '%$pesq%' and Data = '$hoje' 
+    WHERE Horario_saida IS NOT NULL AND Placa like '%$pesq%' and Data = '$hoje'
     LIMIT $inicio, $qnt_result_pg");
 
     // Retorna todos os registros coletados na query, e adicionar no array rows
@@ -147,7 +160,7 @@
       $hora_entrada = new DateTime($row[6]);
       $hora_saida = new DateTime($row[7]);
       $diferenca = $hora_entrada->diff($hora_saida);
-      $tempPerm = $diferenca->format('%H:%I');
+      $tempPerm = $diferenca->format('%H:%I:%S');
 
       echo "
           <div>
@@ -168,8 +181,8 @@
             </fieldset>
 
             <fieldset>
-            <legend>Preço</legend>
-            <p>$row[8]</p>
+            <legend>Valor</legend>
+            <p>R$ $row[11]</p>
             </fieldset>
 
             <!-- row[0] puxa o id -->
@@ -216,6 +229,32 @@
     header("Location: " . $loginRoute);
 
   }?>
+
+
+<script>
+
+let menu = document.querySelector(".menu");
+
+let retratil = document.querySelector(".retratil");
+
+// exibe menu no mobile
+function chamaMenu(){
+    if(retratil.style.right == '-1300px'){
+
+      menu.style.rotate= '90deg'
+      retratil.style.right= '0px'
+
+    }else{
+
+      menu.style.rotate= '0deg'
+      retratil.style.right = '-1300px'
+      
+    }
+}
+
+
+
+</script>
 
 </body>
 

@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../Frontend/FrontendPages/cssModalSenha/modal.css">
     <link rel="stylesheet" href="cssBack/modalsenha.css">
-    <title>Document</title>
+    <title>Cadastro Funcionário</title>
+
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5998/5998796.png">
+
+    <link rel="stylesheet" href="./cssBack/cadFuncionario.css">
+
 </head>
 
 <body>
@@ -19,13 +24,15 @@
 
     // Verifica se o usuário logado é adm
     if ($_SESSION['tipo'] == "Adm") {
-        if (isset($_SESSION['msg'])) {
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
+        if (isset($_SESSION['msgFun'])) {
+            echo $_SESSION['msgFun'];
+            unset($_SESSION['msgFun']);
         }
         // começo da tela
         echo '
         <form action="' .$procCadFunRoute. '" method="POST">
+
+            <h1>Cadastro Funcionário</h1>
 
             <fieldset>
                 <legend>CPF</legend>
@@ -70,14 +77,17 @@
                 </div>
                 
             </div>
+            
             <fieldset>
                 <legend>CONFIRME A SENHA</legend>
                 <input type="password" name="confsenha" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^\w\s]).{8,}$"><br><br>
             </fieldset>
 
+            <div class="btns-cad">
             <input type="submit" id="enviar" value="Enviar" disabled>
-            <a href=' . $listaRoute . ' ?>VOLTAR</a>
-
+            <a id="voltar" href=' . $listaRoute . '>Voltar</a>
+            </div>
+            
         </form>
         
         <script src='. $confSenhaRoute.'></script>

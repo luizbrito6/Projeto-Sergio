@@ -52,7 +52,6 @@ header{
     position: fixed;
     top: 0px;
     width: 100vw;
-    z-index: 1;
     border-radius: 0px 20px;
     transition: all 0.5s;
     z-index: 3;
@@ -217,7 +216,7 @@ footer div img{
 }
 
 .contato p{
-    color: red;
+    color: #F4955C;
 }
 
 .contato form{
@@ -241,7 +240,7 @@ footer div img{
     position: absolute;
     top: 0px;
     right: 10px;
-    color: red;
+    color: #F4955C;
     border: none;
     font-weight: bold;
     font-size: 30px;
@@ -254,7 +253,7 @@ footer div img{
 
 .contato button{
     margin: 10px auto;
-    color: red;
+    color: #F4955C;
     background-color: transparent;
     border: solid;
     padding: 5px 20px;
@@ -262,7 +261,7 @@ footer div img{
 }
 .contato button:hover{
     color: white;
-    background-color: red;
+    background-color: #F4955C;
     border: solid transparent;
 }
 

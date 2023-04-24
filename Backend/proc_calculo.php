@@ -13,9 +13,6 @@ $resultado = mysqli_query($conn, $comando);
 
 $array = mysqli_fetch_assoc($resultado);
 $_SESSION['array'] = $array;
-
-
-
 // retorna Array ( [PK_Registro] => 4 [FK_Usuario] => 1 [Nome] => michael [Telefone] => 11978969547 [Placa] => acs2134 [Data] => 2023-03-24 [Horario_ent] => 15:01:21 [Horario_saida] => [Recarregou_Carro] => 0 ou 1 [Valor_Vaga] => [Valor_eletrico] => [Valor_pago] => )
 
 // Pega a hora atual
@@ -77,8 +74,6 @@ if ($gethora == 0) {
 
 */
 
-
-echo $diferenca -> format("%H %i %s");
 if ($array['Recarregou_Carro'] == 1){
     $precorecarga = ($gethora * 15) + ($getminuto * 0.25);
 } else {
@@ -93,5 +88,3 @@ $_SESSION['precorecarga'] = $precorecarga;
 $_SESSION['total'] = $valortotal;
 
 header("Location: " . $detalhesRoute);
-
-?>
