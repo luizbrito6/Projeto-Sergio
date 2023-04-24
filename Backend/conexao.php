@@ -1,10 +1,8 @@
 <?php
-$host = "bancomayck2dt-server.mysql.database.azure.com";
-$user = "pricjucmeq";
-$pass = 'W5W5086C75UDOJ7K';
-// $user = "teste";
-// $pass = 'P4$sword';
-$dbname = "bancomayck2dt-database";
+$host = "pet-shop-server.mysql.database.azure.com";
+$user = "xjijfzgthm";
+$pass = '8FS407WK3W416425$';
+$dbname = "pet-shop-database";
 
 // Criar a conexao com o Banco de Dados
 try {
